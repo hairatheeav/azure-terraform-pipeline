@@ -2,6 +2,9 @@ pipeline {
     agent any
     
     environment {
+        // Appends common Mac installation paths (Intel & Apple Silicon Homebrew) to the PATH
+        PATH                = "/opt/homebrew/bin:/usr/local/bin:${env.PATH}"
+
         // Map Jenkins credentials to environment variables Terraform understands
         ARM_CLIENT_ID       = credentials('azure-client-id')
         ARM_CLIENT_SECRET   = credentials('azure-client-secret')
